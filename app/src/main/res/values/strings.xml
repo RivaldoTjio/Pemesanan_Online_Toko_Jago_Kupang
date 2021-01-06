@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Pemesanan Online Toko Jago Kupang</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="nama_barang">Nama Barang</string>
+    <string name="harga">Harga</string>
+    <string name="qty_1">Qty : 1</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="bayar">Bayar</string>
+    <string name="nama_metode">Nama Metode</string>
+    <string name="rivaldo_hadi_winata">Rivaldo Hadi Winata</string>
+    <string name="npm">18082010026</string>
+    <string name="my_email">rivaldohadiwinata@gmail.com</string>
+</resources>
