@@ -32,34 +32,14 @@ public abstract class TokoJagoRoomDatabase : RoomDatabase(){
                             context.applicationContext,
                             TokoJagoRoomDatabase::class.java,
                             "toko_jago_database"
-                    )       .addCallback(roomCallback)
-                            .build()
+                    ).build()
                     INSTANCE = instance
                     return instance
                 }
 
         }
-        private val roomCallback = object : RoomDatabase.Callback() {
-            override fun onCreate(db: SupportSQLiteDatabase) {
-                super.onCreate(db)
-                GlobalScope.launch(context = Dispatchers.IO) {
-                    PopulateDB(INSTANCE).initialize()
-                }
 
-
-            }
-        }
     }
 
 
-class PopulateDB(db: TokoJagoRoomDatabase?)  {
-    private val barangDao = db?.barangDao()
-
-    suspend fun initialize() {
-        barangDao?.insert(Barang(1, "Pepsodent 80 gr", 7000, R.drawable.pepsodent))
-    }
-
-
-
-}
 }

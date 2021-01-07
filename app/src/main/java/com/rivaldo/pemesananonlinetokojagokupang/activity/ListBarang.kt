@@ -44,6 +44,9 @@ public class ListBarang : AppCompatActivity(), NavigationView.OnNavigationItemSe
         binding.recyclerviewbarang.setHasFixedSize(true)
         supportActionBar?.title = "Daftar Barang"
         binding.recyclerviewbarang.layoutManager =GridLayoutManager(applicationContext, 2, RecyclerView.VERTICAL, false)
+        val largePadding = resources.getDimensionPixelSize(R.dimen.grid_spacing_large)
+        val smallPadding = resources.getDimensionPixelSize(R.dimen.grid_spacing_small)
+        binding.recyclerviewbarang.addItemDecoration(ProductGridItemDecoration(largePadding, smallPadding))
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mToggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
@@ -89,7 +92,10 @@ public class ListBarang : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 startActivity(intent)
 
             }
-
+            R.id.Profile -> {
+                val intent = Intent(this, DeveloperProfileActivity::class.java)
+                startActivity(intent)
+            }
         }
         return true
     }

@@ -94,7 +94,10 @@ class KeranjangActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             R.id.Keranjang -> {
                 val intent = Intent(this, KeranjangActivity::class.java)
                 startActivity(intent)
-
+            }
+            R.id.Profile -> {
+                val intent = Intent(this, DeveloperProfileActivity::class.java)
+                startActivity(intent)
             }
 
         }

@@ -17,6 +17,9 @@ interface KeranjangDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(item: Keranjang)
 
+    @Query("delete from tabel_keranjang where idbarang = :idbarang")
+    suspend fun deleteItem(idbarang: Int)
+
     @Query("delete from tabel_keranjang")
    suspend fun deleteAll()
 

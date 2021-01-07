@@ -19,4 +19,8 @@ class KeranjangRepository(private val keranjangDao: KeranjangDao) {
         keranjangDao.deleteAll()
     }
 
+    suspend fun deleteItem(idbarang: Int){
+        keranjangDao.deleteItem(idbarang)
+    }
+
 }

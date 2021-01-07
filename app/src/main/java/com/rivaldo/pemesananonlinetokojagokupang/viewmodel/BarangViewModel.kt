@@ -21,15 +21,12 @@ class BarangViewModel(application: Application) : AndroidViewModel(application){
         repository = BarangRepository(barangDao)
         allBarang = repository.allBarang
     }
-//    fun insert(barang: Barang) =  {
-//        repository.insert(barang)
-//    }
+    suspend fun insert(barang: Barang){
+        repository.insert(barang)
+    }
     fun getAllBarang(): LiveData<List<Barang>>{
         return allBarang
     }
-
-
-
 
 }
 

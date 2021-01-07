@@ -9,6 +9,9 @@ import com.rivaldo.pemesananonlinetokojagokupang.R
 import com.rivaldo.pemesananonlinetokojagokupang.model.Barang
 import com.rivaldo.pemesananonlinetokojagokupang.model.Keranjang
 import com.rivaldo.pemesananonlinetokojagokupang.viewmodel.BarangViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class AdapterKeranjang(private val listKeranjang : List<Keranjang>, private val listBarang: List<Barang>) : RecyclerView.Adapter<KeranjangViewHolder>() {
 
@@ -18,16 +21,19 @@ class AdapterKeranjang(private val listKeranjang : List<Keranjang>, private val 
     }
 
     override fun onBindViewHolder(holder: KeranjangViewHolder, position: Int) {
-        if (position < listKeranjang.size) {
+        if (position <= listKeranjang.size) {
             val item = listKeranjang[position]
             val barang = listBarang.find { it.id == item.idbarang }
-            if (barang != null) {
-                holder.imageview.setImageResource(barang.gambar)
+            GlobalScope.launch(context = Dispatchers.Main) {
+                if (barang != null) {
+                    holder.imageview.setImageResource(barang.gambar)
+                }
+                if (barang != null) {
+                    holder.namabarang.text = barang.nama
+                }
+                holder.kuantitas.text = "Qty : "+ item.kuantitas
             }
-            if (barang != null) {
-                holder.namabarang.text = barang.nama
-            }
-            holder.kuantitas.text = "Qty : "+ item.kuantitas
+
         }
     }
 

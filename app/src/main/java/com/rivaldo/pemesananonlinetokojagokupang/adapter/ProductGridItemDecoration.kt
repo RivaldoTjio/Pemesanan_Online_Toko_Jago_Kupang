@@ -14,5 +14,7 @@ class ProductGridItemDecoration(private val largePadding: Int, private val small
                                 parent: RecyclerView, state: RecyclerView.State) {
         outRect.left = smallPadding
         outRect.right = largePadding
+        outRect.bottom = largePadding
+        outRect.top = smallPadding
     }
 }

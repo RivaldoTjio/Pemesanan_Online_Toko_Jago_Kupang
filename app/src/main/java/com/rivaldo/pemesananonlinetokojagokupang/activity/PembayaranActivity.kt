@@ -43,12 +43,18 @@ class PembayaranActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 
         binding.btnPembayaran.setOnClickListener {
             // dialog and clear all keranjang item
+
             alertClick()
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return mToggle.onOptionsItemSelected(item)
+    }
+
+
+    private fun onPaymentSelected() {
+
     }
 
     public fun alertClick(){
@@ -73,7 +79,6 @@ class PembayaranActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
             R.id.Keranjang -> {
                 val intent = Intent(this, KeranjangActivity::class.java)
                 startActivity(intent)
-
             }
 
         }
