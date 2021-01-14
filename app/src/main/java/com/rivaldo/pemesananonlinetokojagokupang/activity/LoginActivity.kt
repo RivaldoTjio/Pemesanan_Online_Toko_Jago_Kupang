@@ -33,7 +33,13 @@ class LoginActivity : AppCompatActivity() {
             barangViewModel.insert(Barang(1, "Pepsodent 80 gr", 7000, R.drawable.pepsodent))
             barangViewModel.insert(Barang(2, "Lifebuoy 225ml", 18000, R.drawable.sabuncairlifebuoy))
             barangViewModel.insert(Barang(3,"Royco Ayam 100gr", 5000, R.drawable.roycoayam100g))
-
+            barangViewModel.insert(Barang(4, "Lifebuoy Sampo 340 ml", 15000, R.drawable.lifebuoyshampo))
+            barangViewModel.insert(Barang(5, "Teh Pucuk Harum 300ml", 3000, R.drawable.tehpucuk))
+            barangViewModel.insert(Barang(6, "Walls Cornetto Oreo ", 10000, R.drawable.cornetto))
+            barangViewModel.insert(Barang(7,"Hand Body Nivea 340ml", 20000, R.drawable.handbodynivea))
+            barangViewModel.insert(Barang(8, "Silverqueen 65 gr", 14000, R.drawable.silverqueen))
+            barangViewModel.insert(Barang(9, "Ponds Men 100 ml", 28000, R.drawable.pondsmensabunmuka))
+            barangViewModel.insert(Barang(10, "Clean and Clear Face Wash 100ml", 10000, R.drawable.cleanandclear))
         }
 
         binding.btnLogin.setOnClickListener {

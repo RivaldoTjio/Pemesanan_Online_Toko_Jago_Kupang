@@ -26,6 +26,7 @@ class Adapter(private val listBarang: List<Barang>) : RecyclerView.Adapter<Adapt
             holder.imageview.setImageResource(item.gambar)
             holder.namabarang.text = item.nama
             holder.hargabarang.text = item.harga.toString()
+
             holder.imgAddCart.setOnClickListener {
                 listener.onAddCartClicked(item)
             }

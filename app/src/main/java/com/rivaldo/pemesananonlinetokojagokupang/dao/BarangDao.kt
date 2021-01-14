@@ -13,7 +13,7 @@ interface BarangDao {
     @Query("Select * from tabel_barang")
     fun getAllBarang(): LiveData<List<Barang>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(barang: Barang)
 
     @Query("delete from tabel_barang")
