@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +13,7 @@ import com.google.android.material.navigation.NavigationView
 import com.rivaldo.pemesananonlinetokojagokupang.R
 import com.rivaldo.pemesananonlinetokojagokupang.databinding.ActivityPembayaranBinding.inflate
 import com.rivaldo.pemesananonlinetokojagokupang.databinding.ActivityPembayaranBinding
+import com.rivaldo.pemesananonlinetokojagokupang.databinding.ActivityPembayaranBinding.bind
 import com.rivaldo.pemesananonlinetokojagokupang.viewmodel.KeranjangViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -40,12 +42,13 @@ class PembayaranActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         binding.drawerLayoutPembayaran.addDrawerListener(mToggle)
         mToggle.syncState()
         binding.navView.setNavigationItemSelectedListener(this)
-
+        binding.rbTunai.setOnClickListener {setPayment("Tunai")    }
+        binding.rbTransfer.setOnClickListener {setPayment("Transfer")     }
+        binding.rbGopay.setOnClickListener {setPayment("Gopay")    }
         binding.btnPembayaran.setOnClickListener {
-            // dialog and clear all keranjang item
-
             alertClick()
         }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -58,6 +61,7 @@ class PembayaranActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     }
 
     public fun alertClick(){
+        if (metodepembayaran.isNotEmpty()){
         AlertDialog.Builder(this)
                 .setMessage("Pembayaran Berhasil ! ")
                 .setPositiveButton("Ok", DialogInterface.OnClickListener { dialog, i ->
@@ -66,6 +70,14 @@ class PembayaranActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         GlobalScope.launch(context = Dispatchers.IO){
             keranjangViewModel.deleteAll()
             finish()
+        }
+
+        }else{
+            AlertDialog.Builder(this)
+                .setMessage("Pembayaran Gagal !")
+                .setPositiveButton("Ok", DialogInterface.OnClickListener { dialog, i ->
+                })
+                .show()
         }
     }
 
@@ -80,9 +92,12 @@ class PembayaranActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 val intent = Intent(this, KeranjangActivity::class.java)
                 startActivity(intent)
             }
-
         }
         return true
+    }
+
+    fun setPayment(payment: String) {
+        this.metodepembayaran = payment
     }
 
 }

@@ -16,6 +16,7 @@ import com.rivaldo.pemesananonlinetokojagokupang.R
 import com.rivaldo.pemesananonlinetokojagokupang.adapter.Adapter
 import com.rivaldo.pemesananonlinetokojagokupang.adapter.AdapterKeranjang
 import com.rivaldo.pemesananonlinetokojagokupang.adapter.KeranjangViewHolder
+import com.rivaldo.pemesananonlinetokojagokupang.adapter.ProductGridItemDecoration
 import com.rivaldo.pemesananonlinetokojagokupang.databinding.ActivityKeranjangBinding
 import com.rivaldo.pemesananonlinetokojagokupang.databinding.ActivityKeranjangBinding.bind
 import com.rivaldo.pemesananonlinetokojagokupang.databinding.ActivityKeranjangBinding.inflate
@@ -51,6 +52,9 @@ class KeranjangActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         mToggle.syncState()
         binding.navView.setNavigationItemSelectedListener(this)
         binding.recyclerviewkeranjang.layoutManager = LinearLayoutManager(this)
+        val largePadding = resources.getDimensionPixelSize(R.dimen.grid_spacing_large)
+        val smallPadding = resources.getDimensionPixelSize(R.dimen.grid_spacing_small)
+        binding.recyclerviewkeranjang.addItemDecoration(ProductGridItemDecoration(largePadding, smallPadding))
         keranjangViewModel = ViewModelProvider(this@KeranjangActivity, ViewModelProvider.AndroidViewModelFactory.getInstance(this.application)).get(KeranjangViewModel::class.java)
         barangViewModel = ViewModelProvider(this@KeranjangActivity, ViewModelProvider.AndroidViewModelFactory.getInstance(this.application)).get(BarangViewModel::class.java)
         barangViewModel.getAllBarang().observe(this, Observer<List<Barang>> {
@@ -71,6 +75,7 @@ class KeranjangActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         binding.btnBayar.setOnClickListener {
             val intent = Intent(this, PembayaranActivity::class.java)
             startActivityForResult(intent, PEMBAYARAN)
+            finish()
         }
     }
 

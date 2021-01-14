@@ -89,7 +89,7 @@ public class ListBarang : AppCompatActivity(), NavigationView.OnNavigationItemSe
             }
             R.id.Keranjang -> {
                 val intent = Intent(this, KeranjangActivity::class.java)
-                startActivity(intent)
+                startActivityForResult(intent,1)
 
             }
             R.id.Profile -> {
